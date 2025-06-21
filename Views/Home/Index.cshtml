@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reece Marimuthu | Portfolio</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        .welcome-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 90%;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #444;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .logo-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .tech-logo {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+            .tech-logo:hover {
+                transform: scale(1.1);
+            }
+
+        @@media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.85rem;
+            }
+
+            .tech-logo {
+                height: 50px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container" style="padding-top: 50px;">
+        <div class="center-wrapper">
+            <div class="glass-container">
+                <div class="welcome-section">
+                    <h1>Welcome to my digital portfolio!</h1>
+                    <p>Here you'll find a showcase of my latest work using C#, Python, Java, SQL, and Power Automate. Feel free to explore and see what I've been building!</p>
+
+                    <div class="logo-row">
+                        <img src="~/img/logo.png" alt="Visual Studio" class="tech-logo" />
+                        <img src="~/img/python.png" alt="Python" class="tech-logo" />
+                        <img src="~/img/sql-server.png" alt="SQL" class="tech-logo" />
+                        <img src="~/img/android.png" alt="Android" class="tech-logo" />
+                        <img src="~/img/PowerAutomate.png" alt="PowerAutomate" class="tech-logo" />
+                    </div>
+                    <br>
+		            <h1>About Me</h1>
+                    <p>I'm Reece Marimuthu, an aspiring software developer with a strong foundation in systems analysis, automation, and application development. I bring a hands-on approach to solving real business problems through code, with a passion for building efficient, user-focused solutions.</p>
+
+                    <p>I’ve worked in both corporate IT operations and business systems analysis, where I’ve developed and streamlined internal processes, automated workflows and managed infrastructure tools. My background equips me to bridge the gap between technical requirements and business needs effectively.</p>
+
+                    <p>My academic journey includes a Cum Laude diploma and an advanced diploma in ICT with a specialization in Application Development from Durban University of Technology. I’ve also completed Cisco’s courses</p>
+
+                    <p>I built this site to showcase my projects from automation scripts to data tools and to demonstrate my technical skills, growth mindset, and drive to contribute to innovative development teams.</p>
+                </div>
+            </div>
+        </div>
+        <div style="height: 60px;"></div>
+
+</body>
+</html>

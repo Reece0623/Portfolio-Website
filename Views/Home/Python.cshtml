@@ -1,0 +1,116 @@
+@model List<WebApplication1.Models.Project>
+
+@{
+    ViewData["Title"] = "Python Projects";
+}
+
+<div class="container" style="padding-top: 100px;">
+    <!-- Added top padding -->
+    <div class="text-center mb-5">
+        <!-- Updated heading with logo -->
+        <h1 class="display-4 d-flex justify-content-center align-items-center gap-3">
+            Python Projects
+            <img src="~/img/python.png" alt="Logo" style="height: 50px;" />
+        </h1>
+        <p class="lead text-white">
+            Explore a collection of Python projects showcasing practical coding skills and GitHub integrations.
+        </p>
+
+    </div>
+@if (Context.Session.GetString("IsAuthenticated") == "true")
+{
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProjectModal">
+        <i class="bi bi-plus-circle"></i> Add Project
+    </button>
+
+    <div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProjectModalLabel">Add New Project</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="AddProject" method="post">
+                        <input type="hidden" name="category" value="Python" />
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Project Title</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Project Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gitHubLink" class="form-label">GitHub Link</label>
+                            <input type="url" class="form-control" id="gitHubLink" name="gitHubLink" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Project</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   }
+
+    <!-- Grid Layout for Project Cards -->
+    <div class="row">
+        @foreach (var project in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="project-card glass-card p-4 h-100">
+                    <h3 class="project-title mb-2">@project.Title</h3>
+                    <p class="project-description mb-3">@project.Description</p>
+                    <a href="@project.GitHubLink" target="_blank" class="github-link btn btn-outline-light mb-2">
+                        <i class="bi bi-github"></i> View on GitHub
+                    </a>
+                    @if (Context.Session.GetString("IsAuthenticated") == "true")
+                    {
+                        <form asp-action="DeleteProject" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@project.Id" />
+                            <input type="hidden" name="category" value="Python" />
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this project?');">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div style="height: 60px;"></div>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- Glassmorphism Styling -->
+<style>
+    body {
+        background: #1e1e2f; /* Dark background for contrast */
+        color: #fff;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        max-width: 500px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5);
+        }
+
+    .github-link i {
+        margin-right: 6px;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
