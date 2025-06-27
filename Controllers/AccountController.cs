@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            if (username == "Admin" && password == "Test12345")
+            if (username == "Admin" && password == "")
             {
                 HttpContext.Session.SetString("IsAuthenticated", "true");
                 HttpContext.Session.SetString("Username", username);
